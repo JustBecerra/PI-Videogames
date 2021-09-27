@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+  DB_USER, DB_PASSWORD, DB_HOST, APP_API_KEY
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
@@ -35,8 +35,8 @@ const { Genre } = sequelize.models
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Videogame.belongsToMany(Genre, {})//buscar que va adentro de llaves 25/9 14:40
-Genre.belongsToMany(Videogame, {})//buscar que va adentro de llaves 25/9 14:40
+Videogame.belongsToMany(Genre, {through: 'Videogame_Genre'})
+Genre.belongsToMany(Videogame, {through: 'Videogame_Genre'})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

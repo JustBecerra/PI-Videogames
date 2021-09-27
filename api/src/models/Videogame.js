@@ -11,12 +11,13 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
+      primaryKey: true,// investigar primaryKey
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    ReleaseDate: {
+    Released: {
       type: DataTypes.DATEONLY,
     },
     Rating: {
