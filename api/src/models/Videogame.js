@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
     },
     id: {
       type: DataTypes.UUID,
-      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,// investigar primaryKey
     },
     description: {
@@ -18,10 +18,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     Released: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
     },
     Rating: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DOUBLE
     },
     Platforms: {
       type: DataTypes.STRING,
