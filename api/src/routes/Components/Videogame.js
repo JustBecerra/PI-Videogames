@@ -18,13 +18,12 @@ router.get('/', async (req, res) => {
         platforms
       }));
       let localVG = await Videogame.findAll()
-      console.log(data)
       //si recibo nombre por query
       arrVideoG = arrData.filter(VG => VG.name.includes(req.query.name))
       arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
 
       if(arrData.some(elem => elem.name.includes(req.query.name))){
-        if(arrVideoG.length > 15){
+        if(arrVideoG.length >= 15){
           arrVideoG.length = 15;
         }else{
           let dif = 15 - arrVideoG.length
@@ -32,7 +31,7 @@ router.get('/', async (req, res) => {
         }
         
        return res.json([...arrVideoG, ...arrLocalVG])
-      }else if(arrVideoG.every(elem => elem === null)){
+      }else if(req.query.name){
         return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
       }
       return res.json([...arrData, ...localVG])
@@ -42,22 +41,29 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+    const {id} = req.params
     try{
-      const response = await fetch(`https://api.rawg.io/api/games/${req.params.id}?key=${YOUR_API_KEY}`);
+      const response = await fetch(`https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`);
       const data = await response.json();
       
-      Juego = data.filter(({name, id, released, rating, platforms, genres}) => {
-        name,
-        id,
-        released,
-        rating,
-        platforms,
-        genres
-      })
-      
-
-      Juego = data.filter(elem => elem.id === parseInt(req.params.id))
-      return res.json(Juego)
+      Juego = {
+        name: data.name,
+        id: data.id,
+        background_image: data.background_image,
+        description: data.description,
+        released: data.released,
+        rating: data.rating,
+        platforms: data.platforms,
+        genres: data.genres
+      }
+      const localID = await Videogame.findById(id)
+      if(Juego){
+        return res.json(Juego)
+      }else if(!Juego){s
+        return res.json(localID)
+      }else{
+        res.status(404).send("Dicho detalle no esta disponible")
+      }
     }catch(err){
       return res.send(err)
     }
