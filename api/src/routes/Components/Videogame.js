@@ -91,15 +91,20 @@ router.post('/', async (req, res) => {
       Platforms,
     })
     //encuentro un genero
-    const localG = await Genre.findOne({
-      where: {name: genres}
+    // const localG = await Genre.findOne({
+    //   where: {name: genres}
+    // })
+     
+    const localG = await Genre.findAll({
+        where: {name: genres}
     })
-
+    // arrlocalGens = localG.map((x) => (
+    //    newVG.addGenre(localG[x].dataValues.id)
+    // ))
+    // console.log(localG)
     //hago la asociacion 
-    await newVG.addGenre(localG.dataValues.id)
+    newVG.addGenre(localG)
     
-    
-
     return res.json(newVG)
   }catch(err){
     res.send(err)
