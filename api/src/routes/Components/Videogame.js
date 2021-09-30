@@ -18,11 +18,15 @@ router.get('/', async (req, res) => {
         rating,
         platforms
       }));
+      arrData.length = 100;
+
       //traigo todos los videojuegos de la DB
       let localVG = await Videogame.findAll()
+      
       //si recibo nombre por query, filtro los datos de la API y la DB
       arrVideoG = arrData.filter(VG => VG.name.includes(req.query.name))
       arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
+      
       //si la propiedad nombre dentro de la API incluye el name del query
       if(arrData.some(elem => elem.name.includes(req.query.name))){
         if(arrVideoG.length >= 15){
