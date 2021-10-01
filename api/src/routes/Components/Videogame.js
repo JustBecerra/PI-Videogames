@@ -8,17 +8,31 @@ const {Videogame, Genre} = require('../../db')
 
 router.get('/', async (req, res) => {
     try{
-      const response = await fetch(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}`);
-      const data = await response.json();
+      var arrInfo = []
+      let next;
+      for(var i = 0; i < 5; i++){
+        if(i === 0){
+          const response = await fetch(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}`);
+          var data = await response.json();
+          next = data.next;
+        }else{
+          const response = await fetch(next);
+          var data = await response.json();
+          next = data.next;
+        }
+        arrInfo = arrInfo.concat(data.results)
+      }
+      
+      
       //mapeo para devolver los datos necesarios
-      arrData = data.results.map(({name, id, released, rating, platforms}) => ({
+      arrData = arrInfo.map(({name, id, rating, genres, background_image}) => ({
         name,
         id,
-        released,
+        background_image,
         rating,
-        platforms
+        genres
       }));
-      arrData.length = 100;
+      
 
       //traigo todos los videojuegos de la DB
       let localVG = await Videogame.findAll()
@@ -95,17 +109,12 @@ router.post('/', async (req, res) => {
       Platforms,
     })
     //encuentro un genero
-    // const localG = await Genre.findOne({
-    //   where: {name: genres}
-    // })
+    
      
     const localG = await Genre.findAll({
         where: {name: genres}
     })
-    // arrlocalGens = localG.map((x) => (
-    //    newVG.addGenre(localG[x].dataValues.id)
-    // ))
-    // console.log(localG)
+    
     //hago la asociacion 
     newVG.addGenre(localG)
     

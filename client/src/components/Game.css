@@ -1,0 +1,14 @@
+.imagen{
+    width: 350px;
+    height: 150px;
+}
+
+.info{
+    background-color: gray;
+    background-size: 50px;
+    color: red;
+}
+
+.elemGame{
+    border:lime
+}
