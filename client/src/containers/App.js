@@ -15,12 +15,12 @@ export default function App() {
         render={() => <LandPage/>}
       />
       <Route
-        exact path='/Home/:id'
+        path='/Home/:id'
         component={GameById}
       />
       <Route 
         exact path='/Home'
-        render={() => <Home/>}
+        component={Home}
       />
     </div>
   );

@@ -1,17 +1,11 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getOneGame} from '../actions/getOneGame'
+import details from './GameById.css'
 
 function GameById (props){
   const dispatch = useDispatch()
   let game = useSelector(state => state.gameDetail)
-  console.log(game)
-  let generos = game.genres.map(elem => {
-      return [...elem.name + " "]
-  })
-  let plataformas = game.platforms.map(elem => {
-    return [...elem.platform.name + " "]
-  })
 
 
   useEffect(() => {
@@ -19,16 +13,30 @@ function GameById (props){
         dispatch(await getOneGame(props.match.params.id))
     })()
   },[])
+  
+  let generos;
+  let plataformas;
 
-  return(
-    <div className='elemGame'>
-      <h2 className="info">{game.name}</h2>     
-      <img className="imagen" src={game.background_image}/>
-      <h4 className="info">{game.rating}</h4>
-      <h4>{game.released}</h4>
-      <h4>{plataformas}</h4>
-      <h4>{generos}</h4>
-      <h6>{game.description}</h6>
+  if(Object.keys(game).length){
+    generos = game.genres.map(elem => {
+      return [...elem.name + " "]
+    })
+    plataformas = game.platforms.map(elem => {
+      return [...elem.platform.name + " "]
+    })
+  }
+  
+    return(
+    <div>
+      <h2>{game.name}</h2>     
+      <img className='imagen' src={game.background_image}/>
+      <div className='infoBlock'>
+        <h4>Rating: {game.rating}</h4>
+        <h4>Released in: {game.released}</h4>
+        <h4>Available platforms: {plataformas}</h4>
+        <h4>Genres: {generos}</h4>
+        <p>Description: {game.description}</p>
+      </div>
     </div>
 )}
 
