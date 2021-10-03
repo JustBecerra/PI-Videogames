@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {getVideogames} from '../actions/GetVideogames'
+import NavBar from './NavBar';
 import Game from './Game'
 import './Home.css'
 
-function Home(){
-    const [videogames, setVideogames] = useState({})
-    
+function Home(){  
     const dispatch = useDispatch()
     let games = useSelector(state => state.games)
-    console.log(games)
+    
     useEffect(() => {
         (async () => {
-            // await getVideogames(dispatch)
             dispatch(await getVideogames())
         })()
     },[])
@@ -21,9 +18,11 @@ function Home(){
 
     return(
         <div>
-        
+          <div>
+            <NavBar/>
+          </div>   
           <div className='Indivgame'>
-            {games.map(g => <Game key={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
+            {games.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
           </div>
         </div>
         
