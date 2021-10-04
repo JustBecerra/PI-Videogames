@@ -43,14 +43,19 @@ router.get('/', async (req, res) => {
       
       //si la propiedad nombre dentro de la API incluye el name del query
       if(arrData.some(elem => elem.name.includes(req.query.name))){
-        if(arrVideoG.length >= 15){
-          arrVideoG.length = 15;//si la API tiene 15 juegos, muestro esos
-        }else{//si no muestro los que tenga la API y le sumo la diferencia con los de la DB
-          let dif = 15 - arrVideoG.length
-          arrLocalVG.length = dif
-        }
-        
-       return res.json([...arrVideoG, ...arrLocalVG])
+        // if(arrVideoG.length >= 15){
+        //   arrVideoG.length = 15;//si la API tiene 15 juegos, muestro esos
+        // } 
+        // if(arrLocalVG.length > 0 && arrLocalVG.length < 15){
+        //   let dif = 15 - arrLocalVG.length
+        //   arrLocalVG.length = dif 
+        // }
+       queryArray = [...arrVideoG, ...arrLocalVG]
+       if(queryArray.length > 15){
+         queryArray.length = 15;
+       }
+       
+       return res.json(queryArray)
       }else if(req.query.name){
         return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
       }

@@ -15,7 +15,7 @@ export default function App() {
         render={() => <LandPage/>}
       />
       <Route
-        path='/Home/:id'
+        exact path='/Home/:id'
         component={GameById}
       />
       <Route 

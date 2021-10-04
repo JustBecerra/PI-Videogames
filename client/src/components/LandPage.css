@@ -4,4 +4,11 @@ body{
     background-size: cover;
     background-attachment: fixed;
     box-sizing: border-box;
-  }
+}
+
+.boton{
+  width: 250px;
+  height: 125px;
+  font-size: 20px;
+  background-color: grey;
+}

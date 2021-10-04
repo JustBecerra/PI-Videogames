@@ -1,13 +1,45 @@
-import React, {useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux'
+import {getGameByQuery} from '../actions/getGameByQuery'
+import Game from './Game'
 
 function SearchBar(){
-    const [input, setInput] = useState('');
+  const [search, setSearch] = useState('');  
+  const dispatch = useDispatch()
+  let queried = useSelector(state => state.gamesQuery)
+  const [games, setGames] = useState(queried)
 
-    return(
-        <div>
-            <input type='text' placeholder='Search game'/>
-        </div>
+//   useEffect(() => {
+//       setGames(queried)
+//   },[search])
+  
+  console.log(search)
+  async function handleSubmit(e){
+    e.preventDefault();
+    if(search){
+      dispatch(await getGameByQuery(search))
+      setSearch('');
+    }else if(search === null){
+      alert('that is not a game')
+    }
+  }
+  
+  function handleChange(e){
+    setSearch(e.target.value)
+  }
+
+return(
+    <div>
+        <form onSubmit={handleSubmit}> 
+          <input type='text' 
+            placeholder='Search game'
+            value={search}
+            onChange={handleChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+        {queried.map(g => {return <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>})}
+    </div>
     )
 }
 

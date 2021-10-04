@@ -1,6 +1,7 @@
 const initialState = {
   games:[],
-  gameDetail: {}
+  gameDetail: {},
+  gamesQuery: []
 }
   
   export const reducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const initialState = {
         case 'GET_GAME_BY_ID':
           return {...state,
             gameDetail: action.payload
+          }
+        case 'GET_GAME_BY_QUERY':
+          return{
+            ...state,
+            gamesQuery: action.payload
           }
       default:
         return state;

@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getOneGame} from '../actions/getOneGame'
 import details from './GameById.css'
+import {Link} from 'react-router-dom'
 
 function GameById (props){
   const dispatch = useDispatch()
   let game = useSelector(state => state.gameDetail)
-
 
   useEffect(() => {
     (async () => {
@@ -28,6 +28,7 @@ function GameById (props){
   
     return(
     <div>
+      <Link to='/Home'><button>Home</button></Link>
       <h2>{game.name}</h2>     
       <img className='imagen' src={game.background_image}/>
       <div className='infoBlock'>
