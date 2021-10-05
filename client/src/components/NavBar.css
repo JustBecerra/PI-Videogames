@@ -1,3 +1,5 @@
 .Barra{
-    background-color: darkblue;
+    background-color: rgb(43, 46, 221);
+    color:blue;
+    border-radius: solid 3px blue;
 }

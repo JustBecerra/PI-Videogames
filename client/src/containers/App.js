@@ -7,12 +7,11 @@ import GameById from '../components/GameById';
 
 
 export default function App() {
-
   return (
     <div className="App">
       <Route
         exact path='/'
-        render={() => <LandPage/>}
+        component={LandPage}
       />
       <Route
         exact path='/Home/:id'

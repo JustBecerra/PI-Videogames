@@ -6,14 +6,8 @@ import Game from './Game'
 function SearchBar(){
   const [search, setSearch] = useState('');  
   const dispatch = useDispatch()
-  let queried = useSelector(state => state.gamesQuery)
-  const [games, setGames] = useState(queried)
-
-//   useEffect(() => {
-//       setGames(queried)
-//   },[search])
+  let games = useSelector(state => state.gamesQuery)
   
-  console.log(search)
   async function handleSubmit(e){
     e.preventDefault();
     if(search){
@@ -38,7 +32,7 @@ return(
           />
           <button type="submit">Search</button>
         </form>
-        {queried.map(g => {return <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>})}
+        {games.map(g => {return <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>})}
     </div>
     )
 }

@@ -5,9 +5,9 @@ import './LandPage.css'
 function LandPage(){
   return(
     <div>
-      <div>
-          <Link to='/Home'><button className='boton'>Enter Website</button></Link>
-          <h1>Videogame website project | made by Justo Becerra</h1>
+      <div>       
+          <h1 className='titulo'>Videogame website project | made by Justo Becerra</h1>
+          <Link to='/Home'><button className='boton'>Welcome!</button></Link>
       </div>
     </div>
       

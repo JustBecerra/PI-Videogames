@@ -2,7 +2,6 @@ import React from 'react';
 import './Game.css'
 import {Link} from 'react-router-dom'
 
-
 function Game ({name,genres,image,id}){
   let generos = genres.map(elem => {
       return [...elem.name + " "]
