@@ -8,8 +8,8 @@ function Game ({name,genres,image,id}){
   })
   return(
     <div className='elemGame'>
-      <Link to={`/Home/${id}`}>
-        <h3 className="info">{name}</h3>
+      <Link to={`/Home/${id}`} className='info'>
+        <h3>{name}</h3>
       </Link>      
       <img className="imagen" src={image}/>
       <h5 className="info">{generos}</h5>

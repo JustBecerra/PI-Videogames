@@ -1,5 +1,6 @@
 .Barra{
-    background-color: rgb(43, 46, 221);
-    color:blue;
-    border-radius: solid 3px blue;
+    background: #010017;
+background: -moz-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
+background: -webkit-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
+background: linear-gradient(to right, #010017 0%, #1F7BB8 50%, #010017 100%);
 }

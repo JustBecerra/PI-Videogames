@@ -9,7 +9,7 @@ import {Barra} from './NavBar.css'
 function Home(){
   const dispatch = useDispatch()
   let games = useSelector(state => state.games)
-  
+  let filtGames = useSelector(state => state.filteredGames)
   const [currentPage, setCurrentPage] = useState(0)
   
   useEffect(() => {
@@ -18,9 +18,9 @@ function Home(){
     })()
   },[])
     
-  const filteredGames = () => {
-    return games.slice(currentPage, currentPage + 15)
-  }
+  // const sliceGames = () => {
+  //   return games.slice(currentPage, currentPage + 15)
+  // }
 
   const nextPage = () => {
     if(currentPage < 90){
@@ -33,14 +33,21 @@ function Home(){
       setCurrentPage( currentPage - 15)
     }
   }
+  
+  let gamesToShow;
+  if(filtGames.length > 0){
+    gamesToShow = filtGames
+  }else{
+    gamesToShow = games.slice(currentPage, currentPage + 15)
+  }
 
   return(
     <div>
-      <div className={Barra}>
+      <div>
         <NavBar/>
       </div>   
       <div className='Indivgame'>
-        {filteredGames().map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
+        {gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
       </div>
       <button onClick={lastPage}>
         Last Page

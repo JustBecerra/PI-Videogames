@@ -28,40 +28,44 @@ const initialState = {
             genres: action.payload
           }
         case 'ASC A-Z':
+          let sortAsc = [...state.games].sort(function(a ,b){
+            if(a.name < b.name) {return -1}
+            if(a.name > b.name) {return 1}
+            return 0;
+          })
           return{
             ...state,
-            filteredGames: state.games.sort(function(a ,b){
-              if(a.name < b.name) {return -1}
-              if(a.name > b.name) {return 1}
-              return 0;
-            })
+            filteredGames: sortAsc
           }
         case 'DESC Z-A':
+          let sortDes = [...state.games].sort(function(a ,b){
+            if(a.name < b.name) {return -1}
+            if(a.name > b.name) {return 1}
+            return 0;
+          }).reverse()
           return{
             ...state,
-            filteredGames: state.games.sort(function(a ,b){
-              if(a.name < b.name) {return -1}
-              if(a.name > b.name) {return 1}
-              return 0;
-            }).reverse()
+            filteredGames: sortDes
           }
         case 'ASC RATING':
+          let sortRat = [...state.games].sort(function(a ,b){
+            if(a.rating < b.rating) {return -1}
+            if(a.rating > b.rating) {return 1}
+            return 0;
+          })
           return{
             ...state,
-            filteredGames: state.games.sort(function(a ,b){
-              if(a.rating < b.rating) {return -1}
-              if(a.rating > b.rating) {return 1}
-              return 0;
-            })
+            filteredGames: sortRat
           }
         case 'DESC RATING':
+          let sortinG = [...state.games].sort(function(a ,b){
+            if(a.rating < b.rating) {return -1}
+            if(a.rating > b.rating) {return 1}
+            return 0;
+          }).reverse()
           return{
             ...state,
-            filteredGames: state.games.sort(function(a ,b){
-              if(a.rating < b.rating) {return -1}
-              if(a.rating > b.rating) {return 1}
-              return 0;
-            }).reverse()
+            filteredGames: sortinG
           }
       default:
         return state;

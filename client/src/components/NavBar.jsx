@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import SearchBar from './SearchBar'
-import Barra from './NavBar.css'
+import './NavBar.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {getGenres} from '../actions/getGenres'
+import {AscAlph, AscRating, DescAlph, DescRating} from '../actions/getFilters'
+
 
 function NavBar(){
   const dispatch = useDispatch()
@@ -14,18 +16,28 @@ function NavBar(){
     })()
   },[])
   
-  
+  function handleFilterBy(e){
+    if(e.target.value === 'ASC A-Z'){
+      dispatch(AscAlph(e.target.value))
+    }else if(e.target.value === 'DESC Z-A'){
+      dispatch(DescAlph(e.target.value))
+    }else if(e.target.value === 'ASC RATING'){
+      dispatch(AscRating(e.target.value))
+    }else if(e.target.value === 'DESC RATING'){
+      dispatch(DescRating(e.target.value))
+    }
+  }
 
   return(
-      <div>
+      <div className='Barra'>
         <SearchBar/>
         <form>
-          <select>
+          <select onChange={e => handleFilterBy(e)}>
             <option hiddendefaultValue>Filter by...</option>
-            <option>Best Rating</option>
-            <option>Worst Rating</option>
-            <option>A-Z</option>
-            <option>Z-A</option>
+            <option value='ASC RATING'>Best Rating</option>
+            <option value='DESC RATING'>Worst Rating</option>
+            <option value='ASC A-Z'>A-Z</option>
+            <option value='DESC Z-A'>Z-A</option>
           </select>
           <select>
             <option hiddendefaultValue>Filter by Genres</option>
