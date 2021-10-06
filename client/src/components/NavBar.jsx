@@ -4,7 +4,7 @@ import './NavBar.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {getGenres} from '../actions/getGenres'
 import {AscAlph, AscRating, DescAlph, DescRating, GenreFilter, sinFiltro} from '../actions/getFilters'
-
+import {Link} from 'react-router-dom'
 
 function NavBar(){
   const dispatch = useDispatch()
@@ -39,16 +39,19 @@ function NavBar(){
         <SearchBar/>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
-            <option Value='sinFiltro'>Filter by...</option>
+            <option value='sinFiltro'>Filter by...</option>
             <option value='ASC RATING'>Best Rating</option>
             <option value='DESC RATING'>Worst Rating</option>
             <option value='ASC A-Z'>A-Z</option>
             <option value='DESC Z-A'>Z-A</option>
           </select>
           <select onChange={e => handleFilterGenres(e)}  className='selectors'>
-            <option hiddendefaultValue>Filter by Genres</option>
+            <option hiddendefaultvalue="true">Filter by Genres</option>
             {genres.map(g => (<option value={g.name}>{g.name}</option>))}
           </select>
+          <Link to={'/create'}>
+            <button>Create your own game!</button>
+          </Link>
         </form>     
       </div>
   )

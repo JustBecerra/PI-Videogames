@@ -1,5 +1,5 @@
 import axios from 'axios'
-const urlapi = 'http://localhost:3001/videogames/'
+const urlapi = 'http://localhost:3001/videogame/'
 
 export async function getOneGame(idGame){
     let info = await axios(urlapi + idGame)

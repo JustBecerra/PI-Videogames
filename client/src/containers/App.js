@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom'
 import Home from '../components/Home'
 import LandPage from '../components/LandPage';
 import GameById from '../components/GameById';
-
+import GameCreation from '../components/GameCreation'
 
 export default function App() {
   return (
@@ -14,12 +14,16 @@ export default function App() {
         component={LandPage}
       />
       <Route
-        exact path='/Home/:id'
+        path='/Home/:id'
         component={GameById}
       />
       <Route 
         exact path='/Home'
         component={Home}
+      />
+      <Route
+        path='/create'
+        component={GameCreation}
       />
     </div>
   );
