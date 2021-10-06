@@ -4,7 +4,7 @@ import {getVideogames} from '../actions/GetVideogames'
 import NavBar from './NavBar';
 import Game from './Game'
 import './Home.css'
-import {Barra} from './NavBar.css'
+
 
 function Home(){
   const dispatch = useDispatch()
@@ -18,10 +18,7 @@ function Home(){
     })()
   },[])
     
-  // const sliceGames = () => {
-  //   return games.slice(currentPage, currentPage + 15)
-  // }
-
+  
   const nextPage = () => {
     if(currentPage < 90){
       setCurrentPage( currentPage + 15)
@@ -49,12 +46,14 @@ function Home(){
       <div className='Indivgame'>
         {gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
       </div>
-      <button onClick={lastPage}>
-        Last Page
-      </button>
-      <button onClick={nextPage}>
-        Next Page
-      </button>
+      <div className='pageButtons'>
+        <button className='buttons' onClick={lastPage}>
+          Last Page
+        </button>
+        <button className='buttons' onClick={nextPage}>
+          Next Page
+        </button>
+      </div>
     </div>     
   )
 }

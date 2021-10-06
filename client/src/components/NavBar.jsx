@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 import './NavBar.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {getGenres} from '../actions/getGenres'
-import {AscAlph, AscRating, DescAlph, DescRating} from '../actions/getFilters'
+import {AscAlph, AscRating, DescAlph, DescRating, GenreFilter, sinFiltro} from '../actions/getFilters'
 
 
 function NavBar(){
@@ -25,21 +25,27 @@ function NavBar(){
       dispatch(AscRating(e.target.value))
     }else if(e.target.value === 'DESC RATING'){
       dispatch(DescRating(e.target.value))
+    }else if(e.target.value === 'sinFiltro'){
+      dispatch(sinFiltro(e.target.value))
     }
+  }
+  
+  function handleFilterGenres(e){
+    dispatch(GenreFilter(e.target.value))
   }
 
   return(
       <div className='Barra'>
         <SearchBar/>
         <form>
-          <select onChange={e => handleFilterBy(e)}>
-            <option hiddendefaultValue>Filter by...</option>
+          <select className='selectors' onChange={e => handleFilterBy(e)}>
+            <option Value='sinFiltro'>Filter by...</option>
             <option value='ASC RATING'>Best Rating</option>
             <option value='DESC RATING'>Worst Rating</option>
             <option value='ASC A-Z'>A-Z</option>
             <option value='DESC Z-A'>Z-A</option>
           </select>
-          <select>
+          <select onChange={e => handleFilterGenres(e)}  className='selectors'>
             <option hiddendefaultValue>Filter by Genres</option>
             {genres.map(g => (<option value={g.name}>{g.name}</option>))}
           </select>

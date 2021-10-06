@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getGameByQuery} from '../actions/getGameByQuery'
 import Game from './Game'
+import './SearchBar.css'
 
 function SearchBar(){
   const [search, setSearch] = useState('');  
@@ -25,12 +26,13 @@ function SearchBar(){
 return(
     <div>
         <form onSubmit={handleSubmit}> 
-          <input type='text' 
+          <input
+            type='text' 
             placeholder='Search game'
             value={search}
             onChange={handleChange}
           />
-          <button type="submit">Search</button>
+          <button className='barrita' type="submit">Search</button>
         </form>
         {games.map(g => {return <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>})}
     </div>

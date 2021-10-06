@@ -1,6 +1,11 @@
 .Barra{
     background: #010017;
-background: -moz-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
-background: -webkit-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
-background: linear-gradient(to right, #010017 0%, #1F7BB8 50%, #010017 100%);
+    background: -moz-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
+    background: -webkit-linear-gradient(left, #010017 0%, #1F7BB8 50%, #010017 100%);
+    background: linear-gradient(to right, #010017 0%, #1F7BB8 50%, #010017 100%);
+}
+
+.selectors{
+    background-color: rgb(0, 0, 0);
+    color:whitesmoke
 }
