@@ -3,8 +3,7 @@ const initialState = {
   gameDetail: {},
   gamesQuery: [],
   genres:[],
-  filteredGames:[],
-  filteredGenres:[]
+  filteredGames:[]
 }
   
   export const reducer = (state = initialState, action) => {
@@ -78,7 +77,7 @@ const initialState = {
             if(a.rating < b.rating) {return -1}
             if(a.rating > b.rating) {return 1}
             return 0;
-          })
+          }).reverse()
           return{
             ...state,
             filteredGames: sortRat
@@ -88,10 +87,15 @@ const initialState = {
             if(a.rating < b.rating) {return -1}
             if(a.rating > b.rating) {return 1}
             return 0;
-          }).reverse()
+          })
           return{
             ...state,
             filteredGames: sortinG
+          }
+        case 'POST_GAME':
+          return{
+            ...state,
+            games:[...state.games, action.payload]
           }
       default:
         return state;

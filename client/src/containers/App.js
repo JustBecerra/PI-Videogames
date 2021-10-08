@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom'
 import Home from '../components/Home'
 import LandPage from '../components/LandPage';
 import GameById from '../components/GameById';
-import GameCreation from '../components/GameCreation'
+import {GameCreator} from '../components/GameCreation'
 
 export default function App() {
   return (
@@ -23,7 +23,7 @@ export default function App() {
       />
       <Route
         path='/create'
-        component={GameCreation}
+        component={GameCreator}
       />
     </div>
   );

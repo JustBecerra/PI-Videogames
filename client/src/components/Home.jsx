@@ -33,7 +33,7 @@ function Home(){
   
   let gamesToShow;
   if(filtGames.length > 0){
-    gamesToShow = filtGames
+    gamesToShow = filtGames.slice(currentPage, currentPage + 15)
   }else{
     gamesToShow = games.slice(currentPage, currentPage + 15)
   }
