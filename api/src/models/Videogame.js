@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       type: DataTypes.DOUBLE
     },
     Platforms: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
     }, 
   }, {

@@ -14,7 +14,8 @@ const initialState = {
             games:action.payload,     
           }
         case 'GET_GAME_BY_ID':
-          return {...state,
+          return {
+            ...state,
             gameDetail: action.payload
           }
         case 'GET_GAME_BY_QUERY':
@@ -95,7 +96,6 @@ const initialState = {
         case 'POST_GAME':
           return{
             ...state,
-            games:[...state.games, action.payload]
           }
       default:
         return state;

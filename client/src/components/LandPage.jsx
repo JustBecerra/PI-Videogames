@@ -5,7 +5,7 @@ import './LandPage.css'
 function LandPage(){
   return(
     <div>
-      <div>       
+      <div className='fondo'>       
           <h1 className='titulo'>Videogame website project | made by Justo Becerra</h1>
           <Link to='/Home'><button className='boton'>Welcome!</button></Link>
       </div>

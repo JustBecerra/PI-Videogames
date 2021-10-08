@@ -4,5 +4,10 @@
 }
 
 .infoBlock{
-    color:black
+    border: solid 3px;
+    border-radius: 30px;
+    border-color: rgb(0, 159, 199);
+    background-color: #fff;
+    background-color: rgba(0,159,199,0.5)
 }
+

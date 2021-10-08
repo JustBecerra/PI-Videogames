@@ -52,7 +52,8 @@ function NavBar(){
           <Link to={'/create'}>
             <button>Create your own game!</button>
           </Link>
-        </form>     
+        </form>
+         
       </div>
   )
 }

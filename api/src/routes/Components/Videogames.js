@@ -35,30 +35,21 @@ router.get('/', async (req, res) => {
 
       //traigo todos los videojuegos de la DB
       let localVG = await Videogame.findAll()
-      
-      //si recibo nombre por query, filtro los datos de la API y la DB
-      arrVideoG = arrData.filter(VG => VG.name.includes(req.query.name))
-      arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
-      
-      //si la propiedad nombre dentro de la API incluye el name del query
-      if(arrData.some(elem => elem.name.includes(req.query.name))){
-        // if(arrVideoG.length >= 15){
-        //   arrVideoG.length = 15;//si la API tiene 15 juegos, muestro esos
-        // } 
-        // if(arrLocalVG.length > 0 && arrLocalVG.length < 15){
-        //   let dif = 15 - arrLocalVG.length
-        //   arrLocalVG.length = dif 
-        // }
-       queryArray = [...arrVideoG, ...arrLocalVG]
-       if(queryArray.length > 15){
-         queryArray.length = 15;
-       }
+            
+      //si la propiedad nombre dentro de la API o DB incluye el name del query
+      if(arrData.some(elem => elem.name.includes(req.query.name)) || localVG.some(elem => elem.name.includes(req.query.name))){
+        arrVideoVG = arrData.filter(VG => VG.name.includes(req.query.name))
+        arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
+        queryArray = [...arrLocalVG, ...arrVideoVG]
+        if(queryArray.length > 15){
+          queryArray.length = 15;
+        }
        
        return res.json(queryArray)
       }else if(req.query.name){
         return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
       }
-      return res.json([...arrData, ...localVG])
+      return res.json([...localVG, ...arrData])
     }catch(err){
        return res.send(err)
     }

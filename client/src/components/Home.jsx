@@ -10,6 +10,7 @@ function Home(){
   const dispatch = useDispatch()
   let games = useSelector(state => state.games)
   let filtGames = useSelector(state => state.filteredGames)
+  let queriedGames = useSelector(state => state.gamesQuery)
   const [currentPage, setCurrentPage] = useState(0)
   
   useEffect(() => {
@@ -34,6 +35,8 @@ function Home(){
   let gamesToShow;
   if(filtGames.length > 0){
     gamesToShow = filtGames.slice(currentPage, currentPage + 15)
+  }else if(queriedGames.length > 0){
+    gamesToShow = queriedGames;
   }else{
     gamesToShow = games.slice(currentPage, currentPage + 15)
   }

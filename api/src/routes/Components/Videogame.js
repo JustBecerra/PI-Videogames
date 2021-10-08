@@ -47,17 +47,16 @@ router.post('/', async (req, res) => {
   try{
     //creo un nuevo videojuego sin genres porque eso lo utilizo a la hora de encontrar un genero
     const newVG = await Videogame.create({
-      name,
-      description,
-      Released,
-      Rating,
-      Platforms,
+      name: name,
+      description: description,
+      Released: Released,
+      Rating: Rating,
+      Platforms: Platforms,
     })
+
     //encuentro un genero
-    
-     
     const localG = await Genre.findAll({
-        where: {name: genres}
+      where: {name: genres}
     })
     
     //hago la asociacion 
@@ -65,7 +64,8 @@ router.post('/', async (req, res) => {
     
     return res.json(newVG)
   }catch(err){
-    res.send(err)
+    console.log(err.message)
+    res.status(404).send(err.message)
   }
 })
 
