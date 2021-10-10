@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();// buscar que es Router
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 require('dotenv').config();
+const {Op} = require('sequelize')
 const {YOUR_API_KEY} = process.env
 const {Videogame, Genre} = require('../../db')
 
@@ -10,17 +11,21 @@ router.get('/:id', async (req, res) => {
     try{
       //si recibo un UUID que tiene 36 caracteres
       //busco un videojuego en la DB con el ID recibido por params
-      if(id.length === 36){
-        const localID = await Videogame.findById(id)
+      if(id.length >= 36){
+        console.log(id)
+        const localID = await Videogame.findOne({
+          where: {id: {[Op.eq]: id}},
+          include: {model:Genre}
+        })
         if(localID){
           return res.json(localID)
         }
       //si no recibo un UUID
-      }else if(id.length !== 36){ 
+      }else if(id.length < 36){ 
         const response = await fetch(`https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`);
         const data = await response.json();
         //busco el juego en la API con el ID que recibo por params
-        Juego = {
+        let Juego = {
           name: data.name,
           id: data.id,
           background_image: data.background_image,
