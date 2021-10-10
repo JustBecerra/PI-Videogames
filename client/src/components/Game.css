@@ -5,7 +5,8 @@
 
 .info{
     text-decoration: none;
-    color:rgb(11, 255, 255)
+    color:rgb(11, 255, 255);
+    font-family: 'Exo', sans-serif;
 }
 
 .elemGame{
@@ -13,7 +14,8 @@
     border-radius: 25px;
     border:solid 3px black;
     background-color: #fff;
-    background-color: rgba(0,159,199,0.5)
+    background-color: rgba(0,159,199,0.5);
+    font-family: 'Exo', sans-serif;
 }
 
 .elemGame:hover{

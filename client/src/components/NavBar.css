@@ -8,12 +8,12 @@
 .homebutton{
     position:relative;
     right:550px;
-    top:30px;
     height:30px;
-
+    width:50px;
 }
 
 .selectors{
     background-color: rgb(0, 0, 0);
-    color:whitesmoke
+    color:whitesmoke;
+    font-family: 'Exo', sans-serif;
 }

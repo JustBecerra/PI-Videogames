@@ -3,7 +3,7 @@ const router = express.Router();// buscar que es Router
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 require('dotenv').config();
 const {YOUR_API_KEY} = process.env
-const {Videogame} = require('../../db')
+const {Videogame, Genre} = require('../../db')
 
 router.get('/', async (req, res) => {
     try{
@@ -34,7 +34,9 @@ router.get('/', async (req, res) => {
       
 
       //traigo todos los videojuegos de la DB
-      let localVG = await Videogame.findAll()
+      let localVG = await Videogame.findAll({
+        include: {model:Genre}
+      })
             
       //si la propiedad nombre dentro de la API o DB incluye el name del query
       if(arrData.some(elem => elem.name.includes(req.query.name)) || localVG.some(elem => elem.name.includes(req.query.name))){

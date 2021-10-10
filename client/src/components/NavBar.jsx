@@ -30,13 +30,20 @@ function NavBar(){
     }
   }
   
+  function refresh(){
+    // window.location.pathname === "/Home" ? 
+    window.location.reload(false) 
+    // window.location.pathname === "/Home"
+  }
+
   function handleFilterGenres(e){
     dispatch(GenreFilter(e.target.value))
   }
 
   return(
-      <div className='Barra'>
+      <header className='Barra'>
         <SearchBar/>
+        <Link to='/Home' onClick={refresh}><img className='homebutton' src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/></Link>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
             <option value='sinFiltro'>Filter by...</option>
@@ -54,7 +61,7 @@ function NavBar(){
           </Link>
         </form>
          
-      </div>
+      </header>
   )
 }
 

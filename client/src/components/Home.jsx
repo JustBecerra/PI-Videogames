@@ -31,7 +31,7 @@ function Home(){
       setCurrentPage( currentPage - 15)
     }
   }
-  
+
   let gamesToShow;
   if(filtGames.length > 0){
     gamesToShow = filtGames.slice(currentPage, currentPage + 15)
@@ -47,7 +47,7 @@ function Home(){
         <NavBar/>
       </div>   
       <div className='Indivgame'>
-        {gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.genres}/>)}
+        {gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.Genres ? g.Genres : g.genres}/>)}
       </div>
       <div className='pageButtons'>
         <button className='buttons' onClick={lastPage}>

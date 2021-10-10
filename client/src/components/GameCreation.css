@@ -9,12 +9,12 @@
 .genreDropdown{
     position: relative;
     left: 120%;
-    bottom: 400px
+    bottom: 400px;
 }
 
 .resultDropdown{
     position: relative;
     left: 120%;
     bottom: 350px;
-    color:rgb(7, 245, 233)
+    color:rgb(7, 245, 233);
 }

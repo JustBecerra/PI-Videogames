@@ -60,12 +60,14 @@ router.post('/', async (req, res) => {
     })
 
     //encuentro un genero
+    if(genres){
     const localG = await Genre.findAll({
       where: {name: genres}
     })
     
     //hago la asociacion 
     newVG.addGenre(localG)
+    }
     
     return res.json(newVG)
   }catch(err){
