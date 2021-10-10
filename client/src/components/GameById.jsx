@@ -42,18 +42,16 @@ function GameById (props){
     return(
     
     <div >
-      {console.log(plataformas)}
-      {game ? <>
       <Link to='/Home'><button>Home</button></Link>
       <h2>{game.name}</h2>     
       <img className='imagen' src={game.background_image}/>
       <div className='infoBlock'>
-        <h4>Rating: {game.rating}</h4>
-        <h4>Released in: {game.released}</h4>
+        <h4>Rating: {game.Rating ? game.Rating : game.rating}</h4>
+        <h4>Released in: {game.Released ? game.Released : game.released}</h4>
         <h4>Available platforms: {plataformas}</h4>
         <h4>Genres: {generos}</h4>
         <p>Description: {game.description}</p>
-      </div> </> : <h1>cris</h1>}
+      </div>
     </div>
 )
 // }catch(err){
