@@ -86,8 +86,7 @@ export function GameCreator(){
       })
      } 
      else {
-      // const indexIds = input.plaforms?.map(elem => elem.platform.id)
-      // const index = indexIds?.indexOf(e.target.id)
+      
       const index = input.Platforms?.indexOf(e.target.id)
       const copyPlatforms = [...input.Platforms]
       copyPlatforms.splice(index,1)
@@ -109,7 +108,7 @@ export function GameCreator(){
     <form onSubmit={(e) => handleSubmit(e)}>
       <Link to='/Home'><button>Home</button></Link>
       <div className='formulario'>
-        <img src='C:\Users\Justo\Desktop\PI-VideoGames\PI-Videogames-main\client\src\imgs\27-278717_joystick-playstation-ps3-video-game-video-game-controller.png' alt='imagen no pudo ser cargada'/>
+        <img src='https://cdn4.iconfinder.com/data/icons/video-game-37/100/game-pad-video-game-consoles-game-pad-analog-stick-generic-controller-white-512.png'/>
         <label>Name:</label>
         <input type='text' name='name' onChange={(e) => handleInputChange(e)}/>
         <label>Rating:</label>
@@ -118,14 +117,6 @@ export function GameCreator(){
         <input type='text' name='Released' onChange={(e) => handleInputChange(e)}/>
         <label>Description:</label>
         <input type='text' name='description' onChange={(e) => handleInputChange(e)}/>
-        <label>Genres:</label>
-        <div>
-          <select onChange={(e) => handleSelect(e)}>
-          <option hiddendefaultvalue="false">Choose one or more genres</option>
-            {generos.map(g => (<option key= {g.name} value={g.name}>{g.name}</option>))}
-          </select>
-          <ul><li>{input.genres.map(elem => elem + " ,")}</li></ul>
-        </div>
         <label>Platforms:</label>
         <div>
           <input type='checkbox' name='PC' onChange={(e) => handleInputCheck(e)}/>
@@ -140,6 +131,14 @@ export function GameCreator(){
           Xbox Series X/S
         </div>
         <button type='submit'>Create Game</button>
+        <label className='genreDropdown'>Genres:</label>
+        <div>
+          <select className='genreDropdown' onChange={(e) => handleSelect(e)}>
+          <option hiddendefaultvalue="false">Choose one or more genres</option>
+            {generos.map(g => (<option key= {g.name} value={g.name}>{g.name}</option>))}
+          </select>
+          <ul className='resultDropdown'><li>{input.genres.map(elem => elem + " - ")}</li></ul>
+        </div>
       </div>
     </form>
   )

@@ -1,7 +1,20 @@
 .formulario{
     display: flex;
     flex-direction: column;
-    width:20%;
+    width:25%;
     position: relative;
-    left:39%;
+    left:20%;
+}
+
+.genreDropdown{
+    position: relative;
+    left: 120%;
+    bottom: 400px
+}
+
+.resultDropdown{
+    position: relative;
+    left: 120%;
+    bottom: 350px;
+    color:rgb(7, 245, 233)
 }

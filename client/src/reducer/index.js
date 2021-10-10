@@ -36,7 +36,7 @@ const initialState = {
           {
             filtrados = juegos.filter(e => {
               let flag = false;
-              e.genres.map(g => {
+              e.genres?.map(g => {
                 if(g.name === action.payload){
                   flag = true;
                 }
