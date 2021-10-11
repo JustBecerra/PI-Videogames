@@ -57,7 +57,7 @@ function NavBar(){
             {genres.map(g => (<option key={g.name} value={g.name}>{g.name}</option>))}
           </select>
           <Link to={'/create'}>
-            <button>Create your own game!</button>
+            <button className='selectors'>Create your own game!</button>
           </Link>
         </form>
          

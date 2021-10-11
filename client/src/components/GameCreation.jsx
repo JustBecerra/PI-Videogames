@@ -105,8 +105,9 @@ export function GameCreator(){
   }
 
   return(
+    <div>
     <form onSubmit={(e) => handleSubmit(e)}>
-      <Link to='/Home'><button>Home</button></Link>
+      <Link to='/Home'><button className='buttonhome'>Home</button></Link>
       <div className='formulario'>
         <img src='https://cdn4.iconfinder.com/data/icons/video-game-37/100/game-pad-video-game-consoles-game-pad-analog-stick-generic-controller-white-512.png'/>
         <label>Name:</label>
@@ -130,7 +131,7 @@ export function GameCreator(){
           <input type='checkbox' name='Xbox Series X/S' onChange={(e) => handleInputCheck(e)}/>
           Xbox Series X/S
         </div>
-        <button type='submit'>Create Game</button>
+        <button className='buttonsubmit' type='submit'>Create Game</button>
         <label className='genreDropdown'>Genres:</label>
         <div>
           <select className='genreDropdown' onChange={(e) => handleSelect(e)}>
@@ -141,6 +142,7 @@ export function GameCreator(){
         </div>
       </div>
     </form>
+  </div>
   )
 }
 
