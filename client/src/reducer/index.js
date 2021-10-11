@@ -75,8 +75,8 @@ const initialState = {
           }
         case 'ASC RATING':
           let sortRat = [...state.games].sort(function(a ,b){
-            if(a.rating < b.rating) {return -1}
-            if(a.rating > b.rating) {return 1}
+            if(a.rating < b.Rating || a.rating < b.rating) {return -1}
+            if(a.rating > b.Rating || a.rating > b.rating) {return 1}
             return 0;
           }).reverse()
           return{
@@ -85,8 +85,8 @@ const initialState = {
           }
         case 'DESC RATING':
           let sortinG = [...state.games].sort(function(a ,b){
-            if(a.rating < b.rating) {return -1}
-            if(a.rating > b.rating) {return 1}
+            if(a.rating < b.Rating || a.rating < b.rating) {return -1}
+            if(a.rating > b.Rating || a.rating > b.rating) {return 1}
             return 0;
           })
           return{

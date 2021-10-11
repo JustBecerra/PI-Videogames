@@ -42,7 +42,7 @@ function GameById (props){
     return(
     
     <div >
-      <Link to='/Home'><button>Home</button></Link>
+      <Link to='/Home'><button className='buttonhogar'>Home</button></Link>
       <h2>{game.name}</h2>     
       <img className='imagen' src={game.background_image}/>
       <div className='infoBlock'>

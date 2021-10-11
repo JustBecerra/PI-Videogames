@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getVideogames} from '../actions/GetVideogames'
 import NavBar from './NavBar';
 import Game from './Game'
+import LoadingGif from './LoadingGif';
 import './Home.css'
 
 
@@ -47,7 +48,8 @@ function Home(){
         <NavBar/>
       </div>   
       <div className='Indivgame'>
-        {gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.Genres ? g.Genres : g.genres}/>)}
+        {gamesToShow.length === 0 ? <LoadingGif/> :
+        gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.Genres ? g.Genres : g.genres}/>)}
       </div>
       <div className='pageButtons'>
         <button className='buttons' onClick={lastPage}>

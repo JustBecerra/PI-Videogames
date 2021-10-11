@@ -11,3 +11,13 @@
     background-color: rgba(0,159,199,0.5);
 }
 
+.buttonhogar{
+    width:100px;
+    height:50px;
+    border-radius: 10px;
+    background-color: rgb(174, 247, 243);
+}
+
+.buttonhogar:hover{
+    box-shadow: 5px 5px 5px 0px #02f5fd, inset 4px 4px 15px 0px #06fafa, 5px 5px 15px 5px rgba(4, 255, 234, 0.993); 
+}
