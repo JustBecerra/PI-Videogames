@@ -22,6 +22,7 @@ body{
   left: 38%;
   bottom: 55%;
   box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
+  cursor: pointer;
 }
 
 .boton:hover{
@@ -31,4 +32,5 @@ body{
 .titulo{
   font-style: oblique;
   font-family: 'Exo', sans-serif;
+  color: #2EFFF6;
 }

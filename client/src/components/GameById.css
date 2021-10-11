@@ -16,6 +16,7 @@
     height:50px;
     border-radius: 10px;
     background-color: rgb(174, 247, 243);
+    cursor: pointer;
 }
 
 .buttonhogar:hover{

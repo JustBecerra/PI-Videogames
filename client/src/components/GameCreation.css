@@ -35,6 +35,7 @@
     left:165px;
     border-radius: 10px;
     background-color: rgb(226, 176, 82);
+    cursor: pointer;
 }
 
 .buttonhome:hover{
@@ -43,6 +44,7 @@
 
 .buttonsubmit{
     background-color: orangered;
+    cursor: pointer;
 }
 
 .buttonsubmit:hover{
