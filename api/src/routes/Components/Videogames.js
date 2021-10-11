@@ -47,11 +47,11 @@ router.get('/', async (req, res) => {
           queryArray.length = 15;
         }
        
-       return res.json(queryArray)
+       return res.status(200).json(queryArray)
       }else if(req.query.name){
         return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
       }
-      return res.json([...localVG, ...arrData])
+      return res.status(200).json([...localVG, ...arrData])
     }catch(err){
        return res.send(err)
     }

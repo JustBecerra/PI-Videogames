@@ -13,17 +13,13 @@ export function validate(input) {
   } else if(!/^[a-zA-Z0-9]*$/.test(input.name)){
     errors.name = 'Name is invalid'
   }
-  if(!input.rating){
-    errors.rating = 'rating is required';
-  }else if(input.rating > 5 || input.rating < 0){
-    errors.rating = 'rating is out of range';
-  }else if(!/^\d*(\.\d+)?$/.test(input.rating)){
-    errors.rating = 'rating must be a number'
+  if(!input.Rating){
+    errors.Rating = 'rating is required';
   }
-  if(!input.released){
-    errors.released = 'release date is required'
+  if(!input.Released){
+    errors.Released = 'release date is required'
   }else if(!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(input.released)){
-    errors.released = 'release date must be a date of DD/MM/YYYY'
+    errors.Released = 'release date must be a date of DD/MM/YYYY'
   }
   if(!input.description){
     errors.description = 'A description is required'
@@ -40,7 +36,12 @@ export function GameCreator(){
     genres:[],
     Platforms:[]
   })
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({
+    name: '',
+    Rating: 0,
+    Released:'',
+    description:'',
+  })
   const dispatch = useDispatch()
   let generos = useSelector(state => state.genres)
   
@@ -52,11 +53,6 @@ export function GameCreator(){
   
 
   function handleInputChange(e){
-    setErrors(validate({
-      ...input,
-      [e.target.name]: e.target.value
-    }));
-
     setInput({
       ...input,
       [e.target.name]: e.target.value
@@ -65,16 +61,23 @@ export function GameCreator(){
   
   async function handleSubmit(e){
     e.preventDefault()
-    dispatch(await postGame(input))
-    setInput({
-      name: '',
-      Rating: 0,
-      Released:'',
-      description:'',
-      genres:[],
-      Platforms:[]
-    })
-    alert('Game created!')
+    if(!input.name || !input.Rating || !input.Released || !input.description){
+      setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
+    }else{
+      dispatch(await postGame(input))
+      setInput({
+        name: '',
+        Rating: 0,
+        Released:'',
+        description:'',
+        genres:[],
+        Platforms:[]
+      })
+      alert('Game created!')
+    }
   }
   
 
@@ -86,7 +89,6 @@ export function GameCreator(){
       })
      } 
      else {
-      
       const index = input.Platforms?.indexOf(e.target.id)
       const copyPlatforms = [...input.Platforms]
       copyPlatforms.splice(index,1)
@@ -112,12 +114,16 @@ export function GameCreator(){
         <img src='https://cdn4.iconfinder.com/data/icons/video-game-37/100/game-pad-video-game-consoles-game-pad-analog-stick-generic-controller-white-512.png'/>
         <label>Name:</label>
         <input type='text' name='name' onChange={(e) => handleInputChange(e)}/>
+        {errors.name ? <small>{errors.name}</small> : ''}
         <label>Rating:</label>
-        <input type='text' name='Rating'onChange={(e) => handleInputChange(e)}/>
+        <input type='text' min='0' max='5' name='Rating'onChange={(e) => handleInputChange(e)}/>
+        {errors.Rating ? <small>{errors.Rating}</small> : ''}
         <label>Release Date:</label>
         <input type='text' name='Released' onChange={(e) => handleInputChange(e)}/>
+        {errors.Released ? <small>{errors.Released}</small> : ''}
         <label>Description:</label>
         <input type='text' name='description' onChange={(e) => handleInputChange(e)}/>
+        {errors.description ? <small>{errors.description}</small> : ''}
         <label>Platforms:</label>
         <div>
           <input type='checkbox' name='PC' onChange={(e) => handleInputCheck(e)}/>

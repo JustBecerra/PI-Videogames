@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getOneGame} from '../actions/getOneGame'
 import './GameById.css'
+import img from '../imgs/GreyJoystick.jpg'
 import {Link} from 'react-router-dom'
 
 function GameById (props){
-  // try{
   const dispatch = useDispatch()
   let game = useSelector(state => state.gameDetail)
 
@@ -17,9 +17,8 @@ function GameById (props){
   
   let generos;
   let plataformas;
-  // if(game.length > 0){
+
   if(Object.keys(game).length){
-    // game.genres?game.genres[0].id : null
     if(game.Genres){
       generos = game.Genres.map(elem => {
         return [...elem.name + " "]})
@@ -44,7 +43,7 @@ function GameById (props){
     <div >
       <Link to='/Home'><button className='buttonhogar'>Home</button></Link>
       <h2>{game.name}</h2>     
-      <img className='imagen' src={game.background_image}/>
+      <img className='imagen' src={game.background_image ? game.background_image : img}/>
       <div className='infoBlock'>
         <h4>Rating: {game.Rating ? game.Rating : game.rating}</h4>
         <h4>Released in: {game.Released ? game.Released : game.released}</h4>
@@ -54,10 +53,6 @@ function GameById (props){
       </div>
     </div>
 )
-// }catch(err){
-//   console.log(err.message)
-//   return err
-// }
 }
 
 export default GameById;
