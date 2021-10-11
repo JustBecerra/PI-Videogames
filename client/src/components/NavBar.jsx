@@ -29,12 +29,6 @@ function NavBar(){
       dispatch(sinFiltro(e.target.value))
     }
   }
-  
-  function refresh(){
-    // window.location.pathname === "/Home" ? 
-    window.location.reload(false) 
-    // window.location.pathname === "/Home"
-  }
 
   function handleFilterGenres(e){
     dispatch(GenreFilter(e.target.value))
@@ -43,7 +37,7 @@ function NavBar(){
   return(
       <header className='Barra'>
         <SearchBar/>
-        <Link to='/Home' onClick={refresh}><img className='homebutton' src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/></Link>
+        <Link to='/Home'><img className='homebutton' src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/></Link>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
             <option value='sinFiltro'>Filter by...</option>
