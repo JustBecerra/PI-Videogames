@@ -12,7 +12,7 @@ router.get('/:id', async (req, res) => {
       //si recibo un UUID que tiene 36 caracteres
       //busco un videojuego en la DB con el ID recibido por params
       if(id.length >= 36){
-        console.log(id)
+        
         const localID = await Videogame.findOne({
           where: {id: {[Op.eq]: id}},
           include: {model:Genre}
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
           return res.json(Juego)
         }
     }else{
-      res.status(404).send("Dicho detalle no esta disponible")
+      res.status(404).send("Dicho videojuego no esta disponible")
     }
     }catch(err){
       return res.send(err)
@@ -71,7 +71,6 @@ router.post('/', async (req, res) => {
     
     return res.json(newVG)
   }catch(err){
-    console.log(err.message)
     res.status(404).send(err.message)
   }
 })

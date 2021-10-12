@@ -93,10 +93,6 @@ const initialState = {
             ...state,
             filteredGames: sortinG
           }
-        case 'POST_GAME':
-          return{
-            ...state,
-          }
       default:
         return state;
     }

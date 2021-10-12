@@ -8,9 +8,11 @@ function SearchBar(){
   const dispatch = useDispatch()
   
   async function handleSubmit(e){
+    
     e.preventDefault();
     if(search){
       dispatch(await getGameByQuery(search))
+      loadingSign = 'game is being queried'
       setSearch('');
     }else if(search === null){
       alert('that is not a game')
@@ -20,7 +22,7 @@ function SearchBar(){
   function handleChange(e){
     setSearch(e.target.value)
   }
-
+  var loadingSign
 return(
     <div>
         <form onSubmit={handleSubmit}> 
@@ -31,6 +33,7 @@ return(
             onChange={handleChange}
           />
           <button className='barrita' type="submit">Search</button>
+          <div>{typeof loadingSign === 'string' ? loadingSign : ''}</div>
         </form>
         
     </div>

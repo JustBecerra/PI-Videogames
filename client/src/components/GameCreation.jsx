@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {getGenres} from '../actions/getGenres'
 import {postGame} from '../actions/postGame'
+import {getVideogames} from '../actions/GetVideogames'
 import {Link} from 'react-router-dom'
 import './GameCreation.css'
 
@@ -67,7 +68,8 @@ export function GameCreator(){
       [e.target.name]: e.target.value
     }));
     }else{
-      dispatch(await postGame(input))
+      await postGame(input)
+      dispatch(await getVideogames())
       setInput({
         name: '',
         Rating: 0,
