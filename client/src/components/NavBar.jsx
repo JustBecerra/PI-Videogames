@@ -54,7 +54,6 @@ function NavBar(){
             <button className='selectors'>Create your own game!</button>
           </Link>
         </form>
-         
       </header>
   )
 }

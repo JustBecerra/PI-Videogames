@@ -41,6 +41,11 @@ const initialState = {
                   flag = true;
                 }
               })
+              e.Genres?.map(g => {
+                if(g.name === action.payload){
+                  flag = true
+                }
+              })
               if(flag) return e
             })
           }
@@ -55,8 +60,8 @@ const initialState = {
           }
         case 'ASC A-Z':
           let sortAsc = [...state.games].sort(function(a ,b){
-            if(a.name < b.name) {return -1}
-            if(a.name > b.name) {return 1}
+            if(a.name.toLowerCase() < b.name.toLowerCase()) {return -1}
+            if(a.name.toLowerCase() > b.name.toLowerCase()) {return 1}
             return 0;
           })
           return{
@@ -65,8 +70,8 @@ const initialState = {
           }
         case 'DESC Z-A':
           let sortDes = [...state.games].sort(function(a ,b){
-            if(a.name < b.name) {return -1}
-            if(a.name > b.name) {return 1}
+            if(a.name.toLowerCase() < b.name.toLowerCase()) {return -1}
+            if(a.name.toLowerCase() > b.name.toLowerCase()) {return 1}
             return 0;
           }).reverse()
           return{

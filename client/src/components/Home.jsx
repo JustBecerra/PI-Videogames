@@ -20,7 +20,10 @@ function Home(){
     })()
   },[])
     
-  
+  useEffect(() => {
+    setCurrentPage(0)
+  },[filtGames])
+
   const nextPage = () => {
     if(currentPage < 90){
       setCurrentPage( currentPage + 15)
