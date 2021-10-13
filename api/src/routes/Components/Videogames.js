@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router();// buscar que es Router
+const router = express.Router();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 require('dotenv').config();
 const {YOUR_API_KEY} = process.env
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
       }
       
       
-      //mapeo para devolver los datos necesarios
+      
       arrData = arrInfo.map(({name, id, rating, genres, background_image}) => ({
         name,
         id,
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
       }));
       
 
-      //traigo todos los videojuegos de la DB
+      
       let localVG = await Videogame.findAll({
         include: {model:Genre}
       })

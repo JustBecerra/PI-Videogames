@@ -10,9 +10,7 @@ router.get('/:id', async (req, res) => {
     const {id} = req.params
     try{
       //si recibo un UUID que tiene 36 caracteres
-      //busco un videojuego en la DB con el ID recibido por params
       if(id.length >= 36){
-        
         const localID = await Videogame.findOne({
           where: {id: {[Op.eq]: id}},
           include: {model:Genre}
@@ -20,11 +18,9 @@ router.get('/:id', async (req, res) => {
         if(localID){
           return res.json(localID)
         }
-      //si no recibo un UUID
       }else if(id.length < 36){ 
         const response = await fetch(`https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`);
         const data = await response.json();
-        //busco el juego en la API con el ID que recibo por params
         let Juego = {
           name: data.name,
           id: data.id,
@@ -50,7 +46,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const {name, description, Released, Rating, Platforms, genres} = req.body
   try{
-    //creo un nuevo videojuego sin genres porque eso lo utilizo a la hora de encontrar un genero
     const newVG = await Videogame.create({
       name: name,
       description: description,
@@ -65,7 +60,6 @@ router.post('/', async (req, res) => {
       where: {name: genres}
     })
     
-    //hago la asociacion 
     newVG.addGenre(localG)
     }
     

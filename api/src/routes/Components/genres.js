@@ -13,12 +13,12 @@ router.get('/', async(req, res) => {
       //traigo los generos
       if(DBcargada.length === 0){
           arrGenres = data.results.map(({id,name}) => (
-          Genre.create({id,name})//creo promesas de creacion con sus propiedades si es que la BD no esta cargada
+          Genre.create({id,name})
         ))
-        //ejecuto las promesas al mismo tiempo con un promise.all
+        
         await Promise.all(arrGenres)
         return res.json(await Genre.findAll())
-      }else{//si la base de datos ya esta cargada, simplemente la retorno
+      }else{
         return res.json(DBcargada)
       }
     }catch(err){
