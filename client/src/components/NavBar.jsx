@@ -29,6 +29,10 @@ function NavBar(){
       dispatch(sinFiltro(e.target.value))
     }
   }
+  
+  function HomeButton(e){
+    dispatch(sinFiltro(e.target.value))
+  }
 
   function handleFilterGenres(e){
     dispatch(GenreFilter(e.target.value))
@@ -37,7 +41,7 @@ function NavBar(){
   return(
       <header className='Barra'>
         <SearchBar/>
-        <Link to='/Home'><img className='homebutton' src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/></Link>
+        <img className='homeimage' value='sinFiltro' onClick={HomeButton} src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
             <option value='sinFiltro'>Filter by...</option>
