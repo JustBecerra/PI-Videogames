@@ -102,10 +102,18 @@ export function GameCreator(){
   }
   
   function handleSelect(e){
-    setInput({
-      ...input,
-      genres: [...input.genres, e.target.value]
-    })
+    if(input.genres.find(elem => elem === e.target.value) === undefined){
+      setInput({
+        ...input,
+        genres: [...input.genres, e.target.value]
+      })
+    }else{
+      let copyGenres = input.genres.filter(elem => elem !== e.target.value)
+      setInput({
+        ...input,
+        genres:copyGenres
+      })
+    }
   }
 
   return(

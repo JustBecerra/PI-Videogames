@@ -6,4 +6,3 @@ export async function getVideogames(){
     return {type: "GET_ALL_VIDEOGAMES", payload:info.data}
 }
 
-
