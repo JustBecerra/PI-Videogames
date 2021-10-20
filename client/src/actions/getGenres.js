@@ -1,5 +1,5 @@
 import axios from 'axios'
-const urlapi = 'http://localhost:3001/genres'
+const urlapi = '/genres'
 
 export async function getGenres(){
     let info = await axios(urlapi)
