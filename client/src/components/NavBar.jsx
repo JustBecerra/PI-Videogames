@@ -52,7 +52,7 @@ function NavBar(){
           </select>
           <select onChange={e => handleFilterGenres(e)}  className='selectors'>
             <option hiddendefaultvalue="true">Filter by Genres</option>
-            {genres.map(g => (<option key={g.name} value={g.name}>{g.name}</option>))}
+            {genres?.map(g => (<option key={g.name} value={g.name}>{g.name}</option>))}
           </select>
           <Link to={'/create'}>
             <button className='selectors'>Create your own game!</button>
