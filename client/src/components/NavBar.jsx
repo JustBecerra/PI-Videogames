@@ -41,8 +41,8 @@ function NavBar(){
 
   return(
       <header className='Barra'>
-        <SearchBar/>
         <img className='homeimage' value='sinFiltro' onClick={HomeButton} src={Logo}/>
+        <SearchBar/>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
             <option value='sinFiltro'>Filter by...</option>

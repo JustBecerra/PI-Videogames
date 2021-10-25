@@ -1,5 +1,12 @@
-.barrita{
+.botonsearch{
     background-color: black;
     color:whitesmoke;
     font-family: 'Exo', sans-serif;
+    position:relative;
+    bottom:50px;
+}
+
+.barrita{
+    position: relative;
+    bottom:50px
 }

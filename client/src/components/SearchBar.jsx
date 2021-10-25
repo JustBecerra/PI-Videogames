@@ -28,14 +28,14 @@ return(
         <form onSubmit={handleSubmit}> 
           <input
             type='text' 
+            className='barrita'
             placeholder='Search game'
             value={search}
             onChange={handleChange}
           />
-          <button className='barrita' type="submit">Search</button>
+          <button className='botonsearch' type="submit">Search</button>
           <div>{typeof loadingSign === 'string' ? loadingSign : ''}</div>
         </form>
-        
     </div>
     )
 }
