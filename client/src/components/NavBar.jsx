@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getGenres} from '../actions/getGenres'
 import {AscAlph, AscRating, DescAlph, DescRating, GenreFilter, sinFiltro} from '../actions/getFilters'
 import {Link} from 'react-router-dom'
+import Logo from '../imgs/pngegg.png'
 
 function NavBar(){
   const dispatch = useDispatch()
@@ -41,7 +42,7 @@ function NavBar(){
   return(
       <header className='Barra'>
         <SearchBar/>
-        <img className='homeimage' value='sinFiltro' onClick={HomeButton} src={'https://www.nicepng.com/png/detail/89-898495_house-logo-png-home-address-logo-png.png'}/>
+        <img className='homeimage' value='sinFiltro' onClick={HomeButton} src={Logo}/>
         <form>
           <select className='selectors' onChange={e => handleFilterBy(e)}>
             <option value='sinFiltro'>Filter by...</option>
