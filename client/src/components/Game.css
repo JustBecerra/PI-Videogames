@@ -9,6 +9,12 @@
     font-family: 'Exo', sans-serif;
 }
 
+.infogenero{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    font-family: 'Exo', sans-serif;
+}
+
 .elemGame{
     flex-basis: 30%;
     border-radius: 25px;

@@ -20,7 +20,7 @@ function Game (props){
         <h3>{props.name}</h3>
       </Link>      
       <img className="imagen" src={props.image ? props.image : img}/>
-      <h5 className="info">{generos}</h5>
+      <h5 className="infogenero">{generos}</h5>
     </div>
 )}
 
