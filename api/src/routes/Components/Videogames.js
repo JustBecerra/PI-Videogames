@@ -39,18 +39,19 @@ router.get('/', async (req, res) => {
       })
             
       //si la propiedad nombre dentro de la API o DB incluye el name del query
-      if(arrData.some(elem => elem.name.includes(req.query.name)) || localVG.some(elem => elem.name.includes(req.query.name))){
-        arrVideoVG = arrData.filter(VG => VG.name.includes(req.query.name))
-        arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
-        queryArray = [...arrLocalVG, ...arrVideoVG]
-        if(queryArray.length > 15){
-          queryArray.length = 15;
-        }
+      // if(arrData.some(elem => elem.name.includes(req.query.name)) || localVG.some(elem => elem.name.includes(req.query.name))){
+      //   arrVideoVG = arrData.filter(VG => VG.name.includes(req.query.name))
+      //   arrLocalVG = localVG.filter(VG => VG.name.includes(req.query.name))
+      //   queryArray = [...arrLocalVG, ...arrVideoVG]
+      //   if(queryArray.length > 15){
+      //     queryArray.length = 15;
+      //   }
        
-       return res.status(200).json(queryArray)
-      }else if(req.query.name){
-        return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
-      }
+      //  return res.status(200).json(queryArray)
+      // }else 
+      // if(req.query.name){
+      //   return res.status(404).send('no se encontro un video juego que contenga esa palabra en su nombre')
+      // }
       return res.status(200).json([...localVG, ...arrData])
     }catch(err){
        return res.send(err)

@@ -51,7 +51,11 @@ function Home(){
         <NavBar/>
       </div>   
       <div className='Indivgame'>
-        {gamesToShow.length === 0 ? <LoadingGif/> :
+        {gamesToShow.length === 0 ? 
+        <div>
+          <h1>Loading...</h1><br/>
+          <LoadingGif/>
+        </div> :
         gamesToShow.map(g => <Game key={g.id} id={g.id} name={g.name} rating={g.rating} image={g.background_image} genres={g.Genres ? g.Genres : g.genres}/>)}
       </div>
       <div className='pageButtons'>

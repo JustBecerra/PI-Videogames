@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
           name: data.name,
           id: data.id,
           background_image: data.background_image,
-          description: data.description,
+          description: data.description_raw,
           released: data.released,
           rating: data.rating,
           platforms: data.platforms,
